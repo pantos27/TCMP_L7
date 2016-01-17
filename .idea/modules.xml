@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/TCMP_L7.iml" filepath="$PROJECT_DIR$/TCMP_L7.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hw_7/hw_7.iml" filepath="$PROJECT_DIR$/hw_7/hw_7.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hw_8_calaculator/hw_8_calaculator.iml" filepath="$PROJECT_DIR$/hw_8_calaculator/hw_8_calaculator.iml" />
+    </modules>
+  </component>
+</project>
