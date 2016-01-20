@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    // Check if the two views are overlapping
+    // Check if the two views are overlapping - need to fix this method
     void checkViewsOverideX (float distance) {
 
             if ( staticView.getX() < distance && distance < (staticView.getX() + staticView.getWidth())
