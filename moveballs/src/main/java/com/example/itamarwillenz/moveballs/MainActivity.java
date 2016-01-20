@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     int direction;
     int moveAmount;
     TextView movingView;
+    TextView staticView;
 
     int maxX;
     int maxY;
@@ -55,8 +56,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         yUp.setOnClickListener(this);
         yDown.setOnClickListener(this);
 
-        maxX = greenLayout.getWidth();
-        maxY = greenLayout.getHeight();
+//        Why Form here the maxX doesn't get a value?
+//        maxX = greenLayout.getWidth();
+//        maxY = greenLayout.getHeight();
 
 
     }
@@ -64,47 +66,89 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
+        // Get the Max width and max hight of the linear Layout
+        maxX = greenLayout.getWidth();
+        maxY = greenLayout.getHeight();
+        float distance;
+
+        // Check if the user entered a number if not send a toast
         try {
             moveAmount = Integer.valueOf(mEditText.getText().toString());
         } catch (NumberFormatException e) {
             Toast.makeText(this, "Please Enter a number", Toast.LENGTH_SHORT).show();
         }
 
+        // Set the Moving_view to be the right view acourding to switch
         direction = v.getId();
         movingView = movingTwo;
-        float distance;
+        staticView = movingOne;
 
         if (mSwitch.isChecked()) {
             movingView = movingOne;
+            staticView = movingTwo;
         }
 
+        //  Perform action according to the button clicked
         switch (direction) {
 
-            case R.id.xUp :
-                // doesn't work the aout od bound thing... lalal
+            case R.id.xUp:
+
                 distance = movingView.getX() + moveAmount;
                 if (distance < maxX - movingView.getWidth()) {
-                    movingView.setX(distance); v.requestLayout();
-                    break;
-                }
-
-                else {
+                    movingView.setX(distance);
+                    v.requestLayout();
+                } else {
                     Toast.makeText(this, "Cant move view out of bounds", Toast.LENGTH_SHORT).show();
-                    break;
                 }
 
-            case R.id.xDown : movingView.setX(movingView.getX() - moveAmount); v.requestLayout();
                 break;
 
-            case R.id.yDown : movingView.setY(movingView.getY() + moveAmount); v.requestLayout();
+            case R.id.xDown:
+
+                distance = movingView.getX() - moveAmount;
+                if (distance > 0) {
+                    movingView.setX(distance);
+                    v.requestLayout();
+                } else {
+                    Toast.makeText(this, "Cant move view out of bounds", Toast.LENGTH_SHORT).show();
+                }
+
                 break;
 
-            case R.id.yUp : movingView.setY(movingView.getY() - moveAmount); v.requestLayout();
+            case R.id.yDown:
+
+                distance = movingView.getY() + moveAmount;
+                if (distance < maxY - movingView.getHeight()) {
+                    movingView.setY(distance);
+                    v.requestLayout();
+                } else {
+                    Toast.makeText(this, "Cant move view out of bounds", Toast.LENGTH_SHORT).show();
+                }
+
                 break;
 
+            case R.id.yUp:
+
+                distance = movingView.getY() - moveAmount;
+                if (distance > 0) {
+                    movingView.setY(distance);
+                    v.requestLayout();
+                } else {
+                    Toast.makeText(this, "Cant move view out of bounds", Toast.LENGTH_SHORT).show();
+                }
+
+                break;
 
 
         }
+
+    }
+
+    void checkViewsOveride (int distance, String xy) {
+
+
+
+
 
     }
 }
