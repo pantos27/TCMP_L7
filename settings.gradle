@@ -1,1 +1,1 @@
-include ':app', ':hw_7', ':hw_8_calaculator'
+include ':app', ':hw_7', ':hw_8_calaculator', ':moveballs'

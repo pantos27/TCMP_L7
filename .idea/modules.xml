@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/hw_7/hw_7.iml" filepath="$PROJECT_DIR$/hw_7/hw_7.iml" />
       <module fileurl="file://$PROJECT_DIR$/hw_8_calaculator/hw_8_calaculator.iml" filepath="$PROJECT_DIR$/hw_8_calaculator/hw_8_calaculator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/moveballs/moveballs.iml" filepath="$PROJECT_DIR$/moveballs/moveballs.iml" />
     </modules>
   </component>
 </project>
