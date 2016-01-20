@@ -94,6 +94,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.xUp:
 
                 distance = movingView.getX() + moveAmount;
+
                 if (distance < maxX - movingView.getWidth()) {
                     movingView.setX(distance);
                     v.requestLayout();
@@ -144,13 +145,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    void checkViewsOveride (int distance, String xy) {
 
-            if ( staticView.getX() < distance && distance < (staticView.getX() + staticView.getWidth())) {
+    // Check if the two views are overlapping
+    void checkViewsOverideX (float distance) {
 
-                // enter the part that the balls have constraints
+            if ( staticView.getX() < distance && distance < (staticView.getX() + staticView.getWidth())
+                    && movingView.getY() > (staticView.getY() + staticView.getHeight())
+                    && movingView.getY() < staticView.getY())
 
-        }
+            {
+
+        } else {
+                Toast.makeText(this, "Cant overlap the two views", Toast.LENGTH_SHORT).show();
+            }
 
 
 
