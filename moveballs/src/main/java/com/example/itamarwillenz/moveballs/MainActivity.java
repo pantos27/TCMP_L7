@@ -146,7 +146,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     void checkViewsOveride (int distance, String xy) {
 
+            if ( staticView.getX() < distance && distance < (staticView.getX() + staticView.getWidth())) {
 
+        }
 
 
 
