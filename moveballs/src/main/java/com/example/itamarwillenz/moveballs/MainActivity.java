@@ -148,6 +148,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             if ( staticView.getX() < distance && distance < (staticView.getX() + staticView.getWidth())) {
 
+                // enter the part that the balls have constraints
+
         }
 
 
