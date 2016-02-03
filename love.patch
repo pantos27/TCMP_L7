@@ -1,0 +1,606 @@
+Index: moveballs/src/androidTest/java/com/example/itamarwillenz/moveballs/ApplicationTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- moveballs/src/androidTest/java/com/example/itamarwillenz/moveballs/ApplicationTest.java	(revision )
++++ moveballs/src/androidTest/java/com/example/itamarwillenz/moveballs/ApplicationTest.java	(revision )
+@@ -0,0 +1,13 @@
++package com.example.itamarwillenz.moveballs;
++
++import android.app.Application;
++import android.test.ApplicationTestCase;
++
++/**
++ * <a href="http://d.android.com/tools/testing/testing_android.html">Testing Fundamentals</a>
++ */
++public class ApplicationTest extends ApplicationTestCase<Application> {
++    public ApplicationTest() {
++        super(Application.class);
++    }
++}
+\ No newline at end of file
+Index: settings.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- settings.gradle	(revision 5273d8b0ad56d12f16105f7902135d0ad5a97346)
++++ settings.gradle	(revision )
+@@ -1,1 +1,1 @@
+-include ':app', ':hw_7', ':hw_8_calaculator'
++include ':app', ':hw_7', ':hw_8_calaculator', ':moveballs'
+Index: moveballs/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- moveballs/.gitignore	(revision )
++++ moveballs/.gitignore	(revision )
+@@ -0,0 +1,1 @@
++/build
+Index: moveballs/src/test/java/com/example/itamarwillenz/moveballs/ExampleUnitTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- moveballs/src/test/java/com/example/itamarwillenz/moveballs/ExampleUnitTest.java	(revision )
++++ moveballs/src/test/java/com/example/itamarwillenz/moveballs/ExampleUnitTest.java	(revision )
+@@ -0,0 +1,15 @@
++package com.example.itamarwillenz.moveballs;
++
++import org.junit.Test;
++
++import static org.junit.Assert.*;
++
++/**
++ * To work on unit tests, switch the Test Artifact in the Build Variants view.
++ */
++public class ExampleUnitTest {
++    @Test
++    public void addition_isCorrect() throws Exception {
++        assertEquals(4, 2 + 2);
++    }
++}
+\ No newline at end of file
+Index: .idea/gradle.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/gradle.xml	(revision 5273d8b0ad56d12f16105f7902135d0ad5a97346)
++++ .idea/gradle.xml	(revision )
+@@ -13,6 +13,7 @@
+             <option value="$PROJECT_DIR$/app" />
+             <option value="$PROJECT_DIR$/hw_7" />
+             <option value="$PROJECT_DIR$/hw_8_calaculator" />
++            <option value="$PROJECT_DIR$/moveballs" />
+           </set>
+         </option>
+       </GradleProjectSettings>
+\ No newline at end of file
+Index: moveballs/src/main/res/values-w820dp/dimens.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- moveballs/src/main/res/values-w820dp/dimens.xml	(revision )
++++ moveballs/src/main/res/values-w820dp/dimens.xml	(revision )
+@@ -0,0 +1,6 @@
++<resources>
++    <!-- Example customization of dimensions originally defined in res/values/dimens.xml
++         (such as screen margins) for screens with more than 820dp of available width. This
++         would include 7" and 10" devices in landscape (~960dp and ~1280dp respectively). -->
++    <dimen name="activity_horizontal_margin">64dp</dimen>
++</resources>
+Index: moveballs/src/main/java/com/example/itamarwillenz/moveballs/CalacYPosition.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- moveballs/src/main/java/com/example/itamarwillenz/moveballs/CalacYPosition.java	(revision )
++++ moveballs/src/main/java/com/example/itamarwillenz/moveballs/CalacYPosition.java	(revision )
+@@ -0,0 +1,32 @@
++package com.example.itamarwillenz.moveballs;
++
++import android.view.View;
++
++/**
++ * Created by itamar.willenz on 1/19/16.
++ */
++public class CalacYPosition implements View.OnClickListener {
++
++    int direction;
++
++
++    @Override
++    public void onClick(View v) {
++
++        direction = v.getId();
++
++        if (direction == R.id.yUp) {
++
++            // move up
++
++        }
++
++        else {
++
++
++
++        }
++        // move down
++
++    }
++}
+Index: moveballs/src/main/java/com/example/itamarwillenz/moveballs/onYPositionReCalaListener.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- moveballs/src/main/java/com/example/itamarwillenz/moveballs/onYPositionReCalaListener.java	(revision )
++++ moveballs/src/main/java/com/example/itamarwillenz/moveballs/onYPositionReCalaListener.java	(revision )
+@@ -0,0 +1,9 @@
++package com.example.itamarwillenz.moveballs;
++
++/**
++ * Created by itamar.willenz on 1/19/16.
++ */
++public interface onYPositionReCalaListener {
++    void moveUp();
++    void moveDown();
++}
+Index: moveballs/src/main/java/com/example/itamarwillenz/moveballs/MainActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- moveballs/src/main/java/com/example/itamarwillenz/moveballs/MainActivity.java	(revision )
++++ moveballs/src/main/java/com/example/itamarwillenz/moveballs/MainActivity.java	(revision )
+@@ -0,0 +1,110 @@
++package com.example.itamarwillenz.moveballs;
++
++import android.graphics.Color;
++import android.support.v7.app.AppCompatActivity;
++import android.os.Bundle;
++import android.view.View;
++import android.view.ViewGroup;
++import android.widget.Button;
++import android.widget.EditText;
++import android.widget.LinearLayout;
++import android.widget.Switch;
++import android.widget.TextView;
++import android.widget.Toast;
++
++public class MainActivity extends AppCompatActivity implements View.OnClickListener {
++
++
++    // Find the Views of the UI
++    LinearLayout greenLayout;
++    Button xUp;
++    Button xDown;
++    Button yUp;
++    Button yDown;
++
++    EditText mEditText;
++    Switch mSwitch;
++    TextView movingOne;
++    TextView movingTwo;
++
++    int direction;
++    int moveAmount;
++    TextView movingView;
++
++    int maxX;
++    int maxY;
++
++    @Override
++    protected void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++        setContentView(R.layout.activity_main);
++
++        mSwitch = (Switch) findViewById(R.id.mSwitch);
++        xUp = (Button) findViewById(R.id.xUp);
++        yUp = (Button) findViewById(R.id.yUp);
++        xDown = (Button) findViewById(R.id.xDown);
++        yDown = (Button) findViewById(R.id.yDown);
++        mEditText = (EditText) findViewById(R.id.editText);
++        greenLayout = (LinearLayout) findViewById(R.id.green_layout);
++        movingOne = (TextView) findViewById(R.id.movingOne);
++        movingTwo = (TextView) findViewById(R.id.movingTwo);
++
++
++        xUp.setOnClickListener(this);
++        xDown.setOnClickListener(this);
++        yUp.setOnClickListener(this);
++        yDown.setOnClickListener(this);
++
++        maxX = greenLayout.getWidth();
++        maxY = greenLayout.getHeight();
++
++
++    }
++
++    @Override
++    public void onClick(View v) {
++
++        try {
++            moveAmount = Integer.valueOf(mEditText.getText().toString());
++        } catch (NumberFormatException e) {
++            Toast.makeText(this, "Please Enter a number", Toast.LENGTH_SHORT).show();
++        }
++
++        direction = v.getId();
++        movingView = movingTwo;
++        float distance;
++
++        if (mSwitch.isChecked()) {
++            movingView = movingOne;
++        }
++
++        switch (direction) {
++
++            case R.id.xUp :
++                // doesn't work the aout od bound thing...
++                distance = movingView.getX() + moveAmount;
++                if (distance < maxX - movingView.getWidth()) {
++                    movingView.setX(distance); v.requestLayout();
++                    break;
++                }
++
++                else {
++                    Toast.makeText(this, "Cant move view out of bounds", Toast.LENGTH_SHORT).show();
++                    break;
++                }
++
++            case R.id.xDown : movingView.setX(movingView.getX() - moveAmount); v.requestLayout();
++                break;
++
++            case R.id.yDown : movingView.setY(movingView.getY() + moveAmount); v.requestLayout();
++                break;
++
++            case R.id.yUp : movingView.setY(movingView.getY() - moveAmount); v.requestLayout();
++                break;
++
++
++
++        }
++
++    }
++}
+Index: moveballs/src/main/res/values/colors.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- moveballs/src/main/res/values/colors.xml	(revision )
++++ moveballs/src/main/res/values/colors.xml	(revision )
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="utf-8"?>
++<resources>
++    <color name="colorPrimary">#3F51B5</color>
++    <color name="colorPrimaryDark">#303F9F</color>
++    <color name="colorAccent">#FF4081</color>
++</resources>
+Index: moveballs/src/main/res/values/styles.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- moveballs/src/main/res/values/styles.xml	(revision )
++++ moveballs/src/main/res/values/styles.xml	(revision )
+@@ -0,0 +1,11 @@
++<resources>
++
++    <!-- Base application theme. -->
++    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
++        <!-- Customize your theme here. -->
++        <item name="colorPrimary">@color/colorPrimary</item>
++        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
++        <item name="colorAccent">@color/colorAccent</item>
++    </style>
++
++</resources>
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/vcs.xml	(revision 5273d8b0ad56d12f16105f7902135d0ad5a97346)
++++ .idea/vcs.xml	(revision )
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="VcsDirectoryMappings">
+-    <mapping directory="" vcs="" />
++    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: moveballs/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- moveballs/src/main/AndroidManifest.xml	(revision )
++++ moveballs/src/main/AndroidManifest.xml	(revision )
+@@ -0,0 +1,20 @@
++<?xml version="1.0" encoding="utf-8"?>
++<manifest xmlns:android="http://schemas.android.com/apk/res/android"
++    package="com.example.itamarwillenz.moveballs">
++
++    <application
++        android:allowBackup="true"
++        android:icon="@mipmap/ic_launcher"
++        android:label="@string/app_name"
++        android:supportsRtl="true"
++        android:theme="@style/AppTheme">
++        <activity android:name=".MainActivity">
++            <intent-filter>
++                <action android:name="android.intent.action.MAIN" />
++
++                <category android:name="android.intent.category.LAUNCHER" />
++            </intent-filter>
++        </activity>
++    </application>
++
++</manifest>
+Index: moveballs/src/main/res/values/dimens.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- moveballs/src/main/res/values/dimens.xml	(revision )
++++ moveballs/src/main/res/values/dimens.xml	(revision )
+@@ -0,0 +1,5 @@
++<resources>
++    <!-- Default screen margins, per the Android Design guidelines. -->
++    <dimen name="activity_horizontal_margin">16dp</dimen>
++    <dimen name="activity_vertical_margin">16dp</dimen>
++</resources>
+Index: moveballs/src/main/res/values/strings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- moveballs/src/main/res/values/strings.xml	(revision )
++++ moveballs/src/main/res/values/strings.xml	(revision )
+@@ -0,0 +1,3 @@
++<resources>
++    <string name="app_name">MoveBalls</string>
++</resources>
+Index: moveballs/src/main/res/layout/activity_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- moveballs/src/main/res/layout/activity_main.xml	(revision )
++++ moveballs/src/main/res/layout/activity_main.xml	(revision )
+@@ -0,0 +1,152 @@
++<?xml version="1.0" encoding="utf-8"?>
++<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:id="@+id/layout_one"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    android:orientation="vertical"
++    android:paddingBottom="@dimen/activity_vertical_margin"
++    android:paddingLeft="@dimen/activity_horizontal_margin"
++    android:paddingRight="@dimen/activity_horizontal_margin"
++    android:paddingTop="@dimen/activity_vertical_margin"
++    tools:context="com.example.itamarwillenz.moveballs.MainActivity">
++
++    <LinearLayout
++        android:layout_width="match_parent"
++        android:layout_height="50dp"
++        android:orientation="horizontal">
++
++        <TextView
++            android:layout_width="0dp"
++            android:layout_height="wrap_content"
++            android:layout_weight="3"
++            android:text="x"
++            android:textSize="40dp" />
++
++        <TextView
++            android:layout_width="0dp"
++            android:layout_height="wrap_content"
++            android:layout_weight="1"
++            android:text="2"
++            android:textSize="30dp" />
++
++        <Switch
++            android:id="@+id/mSwitch"
++            android:layout_width="0dp"
++            android:layout_height="match_parent"
++            android:layout_weight="1"
++            android:gravity="center" />
++
++        <TextView
++            android:layout_width="0dp"
++            android:layout_height="wrap_content"
++            android:layout_weight="1"
++            android:text="1"
++            android:textSize="30dp" />
++
++        <TextView
++            android:layout_width="0dp"
++            android:layout_height="wrap_content"
++            android:layout_weight="3"
++            android:gravity="right"
++            android:text="Y"
++            android:textSize="40dp" />
++
++
++    </LinearLayout>
++
++    <LinearLayout
++        android:layout_width="match_parent"
++        android:layout_height="40dp"
++        android:layout_marginTop="10dp"
++        android:orientation="horizontal">
++
++        <Button
++            android:id="@+id/xUp"
++            android:layout_width="0dp"
++            android:layout_height="wrap_content"
++            android:layout_weight="1"
++            android:background="@drawable/arrowup" />
++
++        <EditText
++            android:layout_width="0dp"
++            android:layout_height="match_parent"
++            android:layout_weight="10"
++            android:gravity="center"
++            android:id="@+id/editText"/>
++
++        <Button
++            android:id="@+id/yUp"
++            android:layout_width="0dp"
++            android:layout_height="wrap_content"
++            android:layout_weight="1"
++            android:background="@drawable/arrowup" />
++
++
++    </LinearLayout>
++
++    <LinearLayout
++        android:layout_width="match_parent"
++        android:layout_height="40dp"
++        android:layout_marginTop="10dp"
++        android:orientation="horizontal"
++        android:weightSum="12">
++
++        <Button
++            android:id="@+id/xDown"
++            android:layout_width="0dp"
++            android:layout_height="wrap_content"
++            android:layout_weight="1"
++            android:background="@drawable/arrowdown" />
++
++        <EditText
++            android:layout_width="0dp"
++            android:layout_height="match_parent"
++            android:layout_weight="10"
++            android:enabled="false"
++            android:gravity="center" />
++
++        <Button
++            android:id="@+id/yDown"
++            android:layout_width="0dp"
++            android:layout_height="wrap_content"
++            android:layout_weight="1"
++            android:background="@drawable/arrowdown" />
++
++
++    </LinearLayout>
++
++    <LinearLayout
++        android:id="@+id/green_layout"
++        android:layout_width="match_parent"
++        android:layout_height="match_parent"
++        android:layout_marginTop="10dp"
++        android:background="#0f0">
++
++        <TextView
++            android:id="@+id/movingOne"
++            android:layout_width="50dp"
++            android:layout_height="50dp"
++            android:background="#5ff"
++            android:gravity="center"
++            android:text="1"
++            android:textSize="40dp">
++
++        </TextView>
++
++        <TextView
++            android:id="@+id/movingTwo"
++            android:layout_width="50dp"
++            android:layout_height="50dp"
++            android:background="#5ff"
++            android:gravity="center"
++            android:text="2"
++            android:textSize="40dp">
++
++        </TextView>
++
++
++    </LinearLayout>
++
++
++</LinearLayout>
+Index: moveballs/proguard-rules.pro
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- moveballs/proguard-rules.pro	(revision )
++++ moveballs/proguard-rules.pro	(revision )
+@@ -0,0 +1,17 @@
++# Add project specific ProGuard rules here.
++# By default, the flags in this file are appended to flags specified
++# in /Users/itamar.willenz/Library/Android/sdk/tools/proguard/proguard-android.txt
++# You can edit the include path and order by changing the proguardFiles
++# directive in build.gradle.
++#
++# For more details, see
++#   http://developer.android.com/guide/developing/tools/proguard.html
++
++# Add any project specific keep options here:
++
++# If your project uses WebView with JS, uncomment the following
++# and specify the fully qualified class name to the JavaScript interface
++# class:
++#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
++#   public *;
++#}
+Index: moveballs/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- moveballs/build.gradle	(revision )
++++ moveballs/build.gradle	(revision )
+@@ -0,0 +1,26 @@
++apply plugin: 'com.android.application'
++
++android {
++    compileSdkVersion 23
++    buildToolsVersion "23.0.2"
++
++    defaultConfig {
++        applicationId "com.example.itamarwillenz.moveballs"
++        minSdkVersion 16
++        targetSdkVersion 23
++        versionCode 1
++        versionName "1.0"
++    }
++    buildTypes {
++        release {
++            minifyEnabled false
++            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
++        }
++    }
++}
++
++dependencies {
++    compile fileTree(dir: 'libs', include: ['*.jar'])
++    testCompile 'junit:junit:4.12'
++    compile 'com.android.support:appcompat-v7:23.1.1'
++}
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/modules.xml	(revision 5273d8b0ad56d12f16105f7902135d0ad5a97346)
++++ .idea/modules.xml	(revision )
+@@ -6,6 +6,7 @@
+       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+       <module fileurl="file://$PROJECT_DIR$/hw_7/hw_7.iml" filepath="$PROJECT_DIR$/hw_7/hw_7.iml" />
+       <module fileurl="file://$PROJECT_DIR$/hw_8_calaculator/hw_8_calaculator.iml" filepath="$PROJECT_DIR$/hw_8_calaculator/hw_8_calaculator.iml" />
++      <module fileurl="file://$PROJECT_DIR$/moveballs/moveballs.iml" filepath="$PROJECT_DIR$/moveballs/moveballs.iml" />
+     </modules>
+   </component>
+ </project>
+\ No newline at end of file
