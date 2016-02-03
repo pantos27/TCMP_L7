@@ -78,6 +78,9 @@ public class DetailsActivity extends Activity implements View.OnClickListener {
             editUserButton.setText("DONE");
         }
         else if(vb.getText().toString().equals("DONE")) {
+            user.setmEmail(mail.getText().toString());
+            user.setmPhone(phone.getText().toString());
+            user.setmAddress(address.getText().toString());
             sendUserBack(USER_EDITED);
             }
         // if delet button clicked

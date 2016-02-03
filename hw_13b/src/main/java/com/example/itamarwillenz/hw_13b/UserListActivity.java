@@ -110,7 +110,9 @@ public class UserListActivity extends Activity {
         else if (requestCode == EDIT_USER) {
             // The user returned should be deleted
             if (resultCode == USER_EDITED) {
-
+                editedUser = data.getParcelableExtra("EditedUser");
+                userLiset.set(editedUserIndex, editedUser);
+                Toast.makeText(this, editedUser.toString()+" was edited", Toast.LENGTH_SHORT).show();
             }
             else if (resultCode == USER_DELETED) {
                 editedUser = data.getParcelableExtra("EditedUser");
