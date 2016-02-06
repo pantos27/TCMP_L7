@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="colorSpinnerItems">
+
+        <item>Blue</item>
+        <item>Red</item>
+        <item>Green</item>
+
+    </string-array>
+
+    <string-array name="shapeSpinnerItems">
+
+        <item>Oval</item>
+        <item>Rectangle</item>
+        <item>Squer</item>
+        <item>Line</item>
+
+    </string-array>
+
+</resources>
