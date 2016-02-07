@@ -14,7 +14,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.my_paint);
+        setContentView(R.layout.activity_main);
 
         colorSpinner = (Spinner) findViewById(R.id.color_spinner);
     }
