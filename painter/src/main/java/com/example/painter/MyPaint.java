@@ -7,6 +7,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -16,14 +17,13 @@ import java.util.ArrayList;
 public class MyPaint extends View {
 
     ArrayList<Shape> shapeList = new ArrayList<Shape>();
-    Shape shape;
+    Shape temShape;
     String shapeType;
     int shapeColor;
     Paint painStyle;
 
-    Point startPoint = new Point();
-    Point endPoint = new Point();
-
+    Point startPoint;
+    Point endPoint;
 
 
     public MyPaint(Context context) {
@@ -44,13 +44,6 @@ public class MyPaint extends View {
     public MyPaint(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
 
-    }
-
-    void intiatePaint (){
-        painStyle = new Paint();
-        painStyle.setColor(shapeColor);
-        painStyle.setStyle(Paint.Style.STROKE);
-        painStyle.setStrokeWidth(4);
     }
 
 
@@ -74,59 +67,106 @@ public class MyPaint extends View {
         this.painStyle = painStyle;
     }
 
-
-    public Shape getShape() {
-        return shape;
+    public Shape getTemShape() {
+        return temShape;
     }
 
-    public void setShape(Shape shape) {
-        this.shape = shape;
+    public void setTemShape(Shape temShape) {
+        this.temShape = temShape;
     }
 
+
+    void intiatePaint() {
+        painStyle = new Paint();
+        painStyle.setColor(shapeColor);
+        painStyle.setStyle(Paint.Style.STROKE);
+        painStyle.setStrokeWidth(4);
+    }
 
     @Override
     protected void onDraw(Canvas canvas) {
         for (Shape s : shapeList) {
             s.draw(canvas);
         }
-        Log.d("Action", "drawing");
+        if (temShape != null) {
+
+            temShape.draw(canvas);
+            Log.d("Action", "drawing");
+        }
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
 
-         if(event.getAction() == MotionEvent.ACTION_DOWN) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
 
-             intiatePaint();
-             startPoint.setX(event.getX());
-             startPoint.setY(event.getY());
+            intiatePaint();
+            startPoint = new Point();
+            startPoint.setX(event.getX());
+            startPoint.setY(event.getY());
 
-             switch (shapeType) {
-                 case "Oval" :
-                     shape = new Oval
-             }
-
-
-         }
-
-        if(event.getAction() == MotionEvent.ACTION_MOVE) {
-
+            endPoint = new Point();
             endPoint.setX(event.getX());
             endPoint.setY(event.getY());
+
+            switch (shapeType) {
+                case "Oval":
+                    temShape = new Oval(startPoint, endPoint, painStyle);
+                    break;
+
+                case "Line":
+                    temShape = new Line(startPoint, endPoint, painStyle);
+                    break;
+//
+              case "Rectangle":
+                    temShape = new Rectangle(startPoint, endPoint, painStyle);
+            }
 
 
         }
 
-        if(event.getAction() == MotionEvent.ACTION_UP) {
+        if (event.getAction() == MotionEvent.ACTION_MOVE) {
 
-            shapeList.add(shape);
-            shape = null;
+            endPoint.setX(event.getX());
+            endPoint.setY(event.getY());
+
+            invalidate();
+
+        }
+
+        if (event.getAction() == MotionEvent.ACTION_UP) {
+
+            // add the shape to the list and restart all the parameters
+            shapeList.add(temShape);
+            temShape = null;
             startPoint = null;
             endPoint = null;
 
         }
 
         return true;
+    }
+
+
+    void deletLastShape () {
+
+        if (shapeList.size() > 0) {
+            shapeList.remove(shapeList.size() - 1);
+            invalidate();
+        } else {
+            Log.d("hi", "The List is empty");
+        }
+
+    }
+
+    void deleteAllShapes () {
+
+        if (shapeList.size() > 0) {
+            shapeList.clear();
+            invalidate();
+        } else {
+            Log.d("hi", "The List is empty");
+        }
     }
 }
 

@@ -8,23 +8,19 @@ import android.graphics.Paint;
  */
 public class Line extends Shape {
 
-    Point start;
-    Point end;
-    Paint paintStyle;
 
-    public Line() {
-    }
+
 
     public Line(Point start, Point end, Paint paintStyle) {
-        this.start = start;
-        this.end = end;
+        startPoint = start;
+        endPoint = end;
         this.paintStyle = paintStyle;
     }
 
     @Override
     public void draw(Canvas canvas) {
 
-        canvas.drawLine(start.getX(), start.getY(), end.getX(), end.getY(), paintStyle);
+        canvas.drawLine(startPoint.getX(), startPoint.getY(), endPoint.getX(), endPoint.getY(), paintStyle);
 
     }
 }

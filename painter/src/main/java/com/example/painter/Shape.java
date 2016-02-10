@@ -8,7 +8,7 @@ import android.graphics.Paint;
  */
 public abstract class Shape {
 
-    Paint paint;
+    Paint paintStyle;
     Point startPoint, endPoint;
 
     public abstract void draw (Canvas canvas);

@@ -3,10 +3,13 @@ package com.example.painter;
 import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -14,12 +17,14 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class MainActivity extends Activity implements Spinner.OnItemSelectedListener {
+public class MainActivity extends Activity implements Spinner.OnItemSelectedListener, View.OnClickListener {
 
     Spinner colorSpinner;
     Spinner shapeSpinner;
-    Shape shapeToDraw;
     MyPaint mypaintView;
+
+    ImageButton deletLast;
+    ImageButton deletAll;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +33,14 @@ public class MainActivity extends Activity implements Spinner.OnItemSelectedList
 
         colorSpinner = (Spinner) findViewById(R.id.color_spinner);
         shapeSpinner = (Spinner) findViewById(R.id.shape_spinner);
+        deletAll = (ImageButton) findViewById(R.id.deletAll);
+        deletLast = (ImageButton) findViewById(R.id.deletLast);
 
         colorSpinner.setOnItemSelectedListener(this);
         shapeSpinner.setOnItemSelectedListener(this);
+
+        deletAll.setOnClickListener(this);
+        deletLast.setOnClickListener(this);
 
         mypaintView = (MyPaint) findViewById(R.id.my_paint1);
     }
@@ -65,35 +75,49 @@ public class MainActivity extends Activity implements Spinner.OnItemSelectedList
                     break;
             }
         } else {
-            Log.d("Hi", "Shape");
             String shape = tv.getText().toString();
-
+            Log.d("Hi", shape);
             switch (shape) {
                 case "Oval":
-                    mypaintView.setShapeType("Oval");
+                    mypaintView.setShapeType(shape);
                     break;
 
                 case "Rectangle":
-                    mypaintView.setShapeType("Rectangle");
-                    break;
-
-                case "Squer":
-                    mypaintView.setShapeType("Squer");
+                    mypaintView.setShapeType(shape);
                     break;
 
                 case "Line":
-                    mypaintView.setShapeType("Line");
+                    mypaintView.setShapeType(shape);
                     break;
             }
         }
 
     }
 
+    @Override
+    public void onClick(View v) {
 
+        if (v.getId() == R.id.deletAll) {
+
+            mypaintView.deleteAllShapes();
+
+        } else {
+
+            mypaintView.deletLastShape();
+
+        }
+
+    }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
 
+
+    // Implement this method
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+    }
 }
