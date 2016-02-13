@@ -1,1 +1,1 @@
-include ':app', ':painter', ':hw_7', ':hw_8_calaculator', ':moveballs', ':lesson11hw', ':hw_12', ':hw_13', ':hw_13b', ':hw_14', ':scrollview'
+include ':app', ':painter', ':hw_7', ':hw_8_calaculator', ':moveballs', ':lesson11hw', ':hw_12', ':hw_13', ':hw_13b', ':hw_14', ':scrollview', ':hw_16_movingballs', ':movingballs'
