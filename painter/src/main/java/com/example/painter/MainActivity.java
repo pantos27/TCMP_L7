@@ -49,6 +49,9 @@ public class MainActivity extends Activity implements Spinner.OnItemSelectedList
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
+        if (view == null) {
+            return;
+        }
         TextView tv = (TextView) view;
 
         if (parent.getId() == R.id.color_spinner) {
@@ -115,9 +118,29 @@ public class MainActivity extends Activity implements Spinner.OnItemSelectedList
     }
 
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        int color = mypaintView.getShapeColor();
+        String shapeType = mypaintView.getShapeType();
+        ArrayList<Shape> shapes = mypaintView.getShapeList();
+
+        outState.putInt("color", color);
+        outState.putString("shapeType", shapeType);
+        outState.putParcelableArrayList("shpaeArray", shapes);
+
+    }
+
     // Implement this method
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
+
+        mypaintView.setShapeColor(savedInstanceState.getInt("color"));
+        mypaintView.setShapeType(savedInstanceState.getString("shapeType"));
+        ArrayList<Shape> shapeList = new ArrayList<>();
+        shapeList = savedInstanceState.getParcelableArrayList("shpaeArray");
+        mypaintView.setShapeList(shapeList);
     }
 }

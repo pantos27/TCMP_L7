@@ -47,6 +47,18 @@ public class MyPaint extends View {
     }
 
 
+    public void setShapeList(ArrayList<Shape> shapeList) {
+        this.shapeList = shapeList;
+    }
+
+    public ArrayList<Shape> getShapeList() {
+        return shapeList;
+    }
+
+    public String getShapeType() {
+        return shapeType;
+    }
+
     public void setShapeType(String shapeType) {
         this.shapeType = shapeType;
     }
