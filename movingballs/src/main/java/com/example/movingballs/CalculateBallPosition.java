@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import java.util.Random;
 
+
 /**
  * Created by itamar.willenz on 13/02/2016.
  */
@@ -21,13 +22,12 @@ public class CalculateBallPosition extends Thread {
     int maxX;
     Handler handler;
 
-    int directionX_blue_ball = 1;
-    int directionY_blue_ball = 1;
+    double directionX_blue_ball = 1;
+    double directionY_blue_ball = 1;
 
-    int directionX_red_ball = 1;
-    int directionY_red_ball = 1;
+    double directionX_red_ball = 1;
+    double directionY_red_ball = 1;
 
-    int velocity = 5;
 
     public CalculateBallPosition(View blue_ball, View red_ball, Handler handler, int maxX, int maxY) {
         this.blue_ball = blue_ball;
@@ -50,10 +50,10 @@ public class CalculateBallPosition extends Thread {
 
     Random random = new Random();
 
-    int blue_ball_new_x;
-    int blue_ball_new_y;
-    int red_ball_new_x;
-    int red_ball_new_y;
+    double blue_ball_new_x;
+    double blue_ball_new_y;
+    double red_ball_new_x;
+    double red_ball_new_y;
 
 
     public void moveBalls(View blue_ball, View red_ball) {
@@ -91,7 +91,7 @@ public class CalculateBallPosition extends Thread {
 
             handler.post(setBalls);
             try {
-                Thread.sleep(velocity);
+                Thread.sleep(5);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -102,15 +102,24 @@ public class CalculateBallPosition extends Thread {
     Runnable setBalls = new Runnable() {
         @Override
         public void run() {
-            blue_ball.setX(blue_ball_new_x);
-            blue_ball.setY(blue_ball_new_y);
-            red_ball.setX(red_ball_new_x);
-            red_ball.setY(red_ball_new_y);
+            blue_ball.setX((float) blue_ball_new_x);
+            blue_ball.setY((float) blue_ball_new_y);
+            red_ball.setX((float) red_ball_new_x);
+            red_ball.setY((float) red_ball_new_y);
         }
     };
 
 
-    public void setVelocity(int velocity) {
-        this.velocity = velocity;
+    public void setRedVelocity(double velocity) {
+        directionY_red_ball *= velocity;
+        directionX_red_ball *= velocity;
     }
+
+    public void setBlueVelocity(double velocity) {
+        directionY_blue_ball *= velocity;
+        directionX_blue_ball *= velocity;
+    }
+
 }
+
+
